@@ -18,6 +18,34 @@
         android:textSize="18sp"
         android:textStyle="bold" />
 
-
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <EditText
+                android:id="@+id/txtNombre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/nombre" />
+            <EditText
+                android:id="@+id/txtFrecuencia"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/frecuencia" />
+            <EditText
+                android:id="@+id/txtFechaCreacion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/fecha_creaci_n" />
+            <EditText
+                android:id="@+id/txtDescripcionModalidad"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/descripci_n_de_modalidad" />
+        </LinearLayout>
+    </ScrollView>
 
 </androidx.appcompat.widget.LinearLayoutCompat>

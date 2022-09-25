@@ -38,13 +38,10 @@
     <string name="txt_menu_revista">Revista</string>
     <string name="txt_menu_sala">Sala</string>
     <string name="txt_menu_usuario">Usuario</string>
-
-
-
-
-
-
-
+    <string name="nombre">Nombre</string>
+    <string name="frecuencia">Frecuencia</string>
+    <string name="fecha_creaci_n">Fecha Creación</string>
+    <string name="descripci_n_de_modalidad">Descripción de Modalidad</string>
 
 
 </resources>
