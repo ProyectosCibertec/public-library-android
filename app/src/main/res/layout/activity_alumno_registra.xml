@@ -18,6 +18,25 @@
         android:textSize="18sp"
         android:textStyle="bold" />
 
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nombres"/>
+        <EditText
+            android:id="@+id/txtRegAlumnoNombres"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+</ScrollView>
 
 </androidx.appcompat.widget.LinearLayoutCompat>
