@@ -6,15 +6,15 @@ public class Revista {
     private int idRevista;
     private String nombre;
     private String frecuencia;
-    private Date fechaCreacion;
-    private Date fechaRegistro;
+    private String fechaCreacion;
+    private String fechaRegistro;
     private int estado;
     private Modalidad modalidad;
 
     public Revista() {
     }
 
-    public Revista(int idRevista, String nombre, String frecuencia, Date fechaCreacion, Date fechaRegistro, int estado, Modalidad modalidad) {
+    public Revista(int idRevista, String nombre, String frecuencia, String fechaCreacion, String fechaRegistro, int estado, Modalidad modalidad) {
         this.idRevista = idRevista;
         this.nombre = nombre;
         this.frecuencia = frecuencia;
@@ -48,19 +48,19 @@ public class Revista {
         this.frecuencia = frecuencia;
     }
 
-    public Date getFechaCreacion() {
+    public String getFechaCreacion() {
         return fechaCreacion;
     }
 
-    public void setFechaCreacion(Date fechaCreacion) {
+    public void setFechaCreacion(String fechaCreacion) {
         this.fechaCreacion = fechaCreacion;
     }
 
-    public Date getFechaRegistro() {
+    public String getFechaRegistro() {
         return fechaRegistro;
     }
 
-    public void setFechaRegistro(Date fechaRegistro) {
+    public void setFechaRegistro(String fechaRegistro) {
         this.fechaRegistro = fechaRegistro;
     }
 

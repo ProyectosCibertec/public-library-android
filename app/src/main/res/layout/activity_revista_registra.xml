@@ -61,7 +61,7 @@
                 android:text="@string/fecha_creaci_n" />
 
             <EditText
-                android:id="@+id/exitFechaCreacion"
+                android:id="@+id/editFechaCreacion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="1pt" />
@@ -77,6 +77,14 @@
                 android:id="@+id/spnModalidad"
                 android:layout_width="match_parent"
                 android:layout_height="38dp" />
+
+            <Button
+                android:id="@+id/btnRegistrar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="1pt"
+                android:onClick="registerMagazine"
+                android:text="@string/registrar" />
         </LinearLayout>
     </ScrollView>
 

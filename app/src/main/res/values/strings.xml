@@ -43,6 +43,7 @@
     <string name="fecha_creaci_n">Fecha Creación</string>
     <string name="descripci_n_de_modalidad">Descripción de Modalidad</string>
     <string name="modalidad">Modalidad</string>
+    <string name="registrar">Registrar</string>
 
 
 </resources>
