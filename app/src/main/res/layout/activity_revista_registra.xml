@@ -4,15 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".vista.registra.RevistaRegistraActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="10dp"
+    tools:context=".vista.registra.RevistaRegistraActivity">
 
     <TextView
         android:id="@+id/idTitlePage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:padding="10dp"
+        android:layout_marginVertical="10dp"
         android:text="@string/txt_registro_de_revista"
         android:textAlignment="center"
         android:textSize="18sp"
@@ -20,31 +20,63 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-            <EditText
+
+            <TextView
                 android:id="@+id/txtNombre"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginVertical="1pt"
                 android:text="@string/nombre" />
+
             <EditText
+                android:id="@+id/editNombre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="1pt" />
+
+            <TextView
                 android:id="@+id/txtFrecuencia"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginVertical="1pt"
                 android:text="@string/frecuencia" />
+
             <EditText
+                android:id="@+id/editFrecuencia"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="1pt" />
+
+            <TextView
                 android:id="@+id/txtFechaCreacion"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginVertical="1pt"
                 android:text="@string/fecha_creaci_n" />
+
             <EditText
-                android:id="@+id/txtDescripcionModalidad"
+                android:id="@+id/exitFechaCreacion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/descripci_n_de_modalidad" />
+                android:layout_marginVertical="1pt" />
+
+            <TextView
+                android:id="@+id/txtModalidad"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="1pt"
+                android:text="@string/modalidad" />
+
+            <Spinner
+                android:id="@+id/spnModalidad"
+                android:layout_width="match_parent"
+                android:layout_height="38dp" />
         </LinearLayout>
     </ScrollView>
 
