@@ -5,7 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".vista.registra.AutorRegistraActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="15dp"
+
+
+    >
 
     <TextView
         android:id="@+id/idTitlePage"
@@ -16,8 +20,101 @@
         android:text="@string/txt_registro_de_autor"
         android:textAlignment="center"
         android:textSize="18sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"/>
 
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="1pt"
+
+                android:text="Nombres" />
+
+            <EditText
+                android:id="@+id/txtNombres"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+               android:layout_marginVertical="5pt"
+
+                 />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="1pt"
+
+                android:text="Apellidos" />
+
+            <EditText
+                android:id="@+id/txtApellidos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="5pt" />
+
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="1pt"
+
+                android:text="Fecha de Nacimiento" />
+
+            <EditText
+                android:id="@+id/txtfechaNacimiento"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="5pt"/>
+
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="1pt"
+
+                android:text="Telefono" />
+
+            <EditText
+                android:id="@+id/txtTelefono"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="5pt"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="1pt"
+
+                android:text="Grado" />
+
+            <Spinner
+                android:id="@+id/spnGrado"
+                android:layout_width="match_parent"
+                android:layout_height="35dp" />
+
+
+            <Button
+                android:id="@+id/btnRegistrarAutor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="10pt"
+                android:text="Registrar"
+
+                />
+        </LinearLayout>
+    </ScrollView>
 
 
 </androidx.appcompat.widget.LinearLayoutCompat>
