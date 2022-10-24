@@ -3,24 +3,41 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
-    android:weightSum="9"
+    android:weightSum="5"
     >
 
-    <TextView
-
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
+    <ImageView
+        android:id="@+id/idLibroItemImagen"
         android:layout_weight="1"
-        android:id="@+id/idLibroItemId"
-        android:text="1"/>
-
-    <TextView
-
         android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="8"
-        android:id="@+id/idLibroItemRazSoc"
-        android:text="Lumbreras"/>
+        android:layout_height="wrap_content"/>
+        
+    <LinearLayout
+        android:layout_weight="4"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:weightSum="9"
+        android:orientation="horizontal">
+
+        <TextView
+
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/idLibroItemId"
+            android:text="1"/>
+
+        <TextView
+
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="8"
+            android:id="@+id/idLibroItemRazSoc"
+            android:text="Lumbreras"/>
+
+
+    </LinearLayout>
+
 
 
 
