@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".vista.consulta.AutorConsultaActivity"
-    android:orientation="vertical">
+    android:orientation="vertical" >
 
     <TextView
         android:layout_width="match_parent"
@@ -16,6 +16,22 @@
         android:textAlignment="center"
         android:textSize="18sp"
         android:textStyle="bold" />
+    <Button
+        android:id="@+id/btnConsultarAutor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:padding="4dp"
+        android:text="Consultar" />
+    <ListView
+        android:id="@+id/idConsultarAutorListView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="5dp"
+        android:padding="4dp"
+        android:divider="@color/black"
+        android:dividerHeight="1dp"
+        />
 
 
 
