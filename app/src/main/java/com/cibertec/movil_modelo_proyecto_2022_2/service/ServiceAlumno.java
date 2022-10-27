@@ -13,4 +13,9 @@ import retrofit2.http.POST;
 public interface ServiceAlumno {
     @POST("alumno")
 public Call<Alumno>insertaAlumno(@Body Alumno obj);
+
+    @GET("alumno")
+    public Call<List<Alumno>> listaAlumno();
+
+
 }
