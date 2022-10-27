@@ -108,7 +108,7 @@ public class LibroRegistraActivity extends NewAppCompatActivity {
                     Libro objSalida =   response.body();
                     mensajeAlert("Se registro el Libro " +
                             "\nID >> " + objSalida.getIdLibro() +
-                            "\nRazón Social >> " + objSalida.getTitulo() );
+                            "\nTitulo >> " + objSalida.getTitulo() );
 
                 }
 

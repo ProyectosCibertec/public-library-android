@@ -3,6 +3,37 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
+    android:weightSum="10"
     >
+    <ImageView
+        android:id="@+id/idAutorItemImagen"
+        android:layout_weight="4"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_weight="6"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:weightSum="9"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:id="@+id/txtAutorId"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:text="1"
+            />
+
+        <TextView
+            android:id="@+id/txtAutorNombre"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="6"
+            android:text=""/>
+
+    </LinearLayout>
 
 </LinearLayout>
