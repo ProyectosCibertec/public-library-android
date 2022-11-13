@@ -1,5 +1,7 @@
 package com.cibertec.movil_modelo_proyecto_2022_2.entity;
 
-public class Sala {
+import java.io.Serializable;
+
+public class Sala  implements Serializable {
 
 }
