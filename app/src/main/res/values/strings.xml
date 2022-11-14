@@ -46,6 +46,8 @@
     <string name="registrar">Registrar</string>
     <string name="revista_consulta_consultar">Consultar</string>
     <string name="im_genes_de_revistas">Imágenes de revistas</string>
+    <string name="introduce_un_nombre_de_revista">Introduce un nombre de revista</string>
+    <string name="filtrar">Filtrar</string>
 
 
 </resources>

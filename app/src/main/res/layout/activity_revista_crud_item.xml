@@ -8,5 +8,15 @@
     >
 
 
+    <TextView
+        android:id="@+id/txtCrudItemIdRevista"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView" />
 
+    <TextView
+        android:id="@+id/txtCrudItemNombreRevista"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView" />
 </androidx.appcompat.widget.LinearLayoutCompat>

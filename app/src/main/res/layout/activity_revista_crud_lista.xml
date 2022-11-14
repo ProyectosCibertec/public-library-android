@@ -4,9 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FF5722"
     android:orientation="vertical"
     android:padding="15sp"
-    tools:context=".vista.crud.AlumnoCrudListaActivity">
+    tools:context=".vista.crud.RevistaCrudListaActivity">
 
     <TextView
         android:layout_width="match_parent"
@@ -15,8 +16,36 @@
         android:padding="10dp"
         android:text="@string/txt_crud_de_revista"
         android:textAlignment="center"
+        android:textColor="#FFFFFF"
         android:textSize="18sp"
         android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/txtCrudNombreRevista"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/introduce_un_nombre_de_revista"
+        android:inputType="textPersonName"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF" />
+
+    <Button
+        android:id="@+id/btnCrudFiltrarRevista"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/filtrar" />
+
+    <Button
+        android:id="@+id/btnCrudRegistrarRevista"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/registrar" />
+
+    <ListView
+        android:id="@+id/lstCrudMantenimientoRevista"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 
 </androidx.appcompat.widget.LinearLayoutCompat>
