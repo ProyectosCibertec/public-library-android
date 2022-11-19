@@ -29,7 +29,7 @@ import retrofit2.Response;
 
 public class RevistaCrudListaActivity extends NewAppCompatActivity {
 
-    private static Logger logger = Logger.getLogger(RevistaCrudListaActivity.class.getName());
+    private static Logger LOGGER = Logger.getLogger(RevistaCrudListaActivity.class.getName());
     ListView lstCrudMantenimientoRevista;
     List<Revista> revistaList = new ArrayList<>();
     RevistaAdapter adapter;
@@ -56,12 +56,16 @@ public class RevistaCrudListaActivity extends NewAppCompatActivity {
         adapter = new RevistaAdapter(this, R.layout.activity_revista_consulta_item, revistaList);
         lstCrudMantenimientoRevista.setAdapter(adapter);
         obtenerRevistas();
-        // Actualizar revistas
+        // Actualizar/Eliminar revistas
         lstCrudMantenimientoRevista.setOnItemClickListener((adapterView, view, i, l) -> {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setTitle("Qué desea hacer?");
+            builder.setTitle("¿Qué desea hacer?");
             builder.setPositiveButton("Actualizar", (dialogInterface, j) -> {
                 Intent intent = new Intent(this, RevistaRegistraActivity.class);
+                TextView txtRevistaId = view.findViewById(R.id.txtRevistaId);
+                intent.putExtra("ES_REGISTRO", false);
+                intent.putExtra("ID_REVISTA", Integer.parseInt(txtRevistaId.getText().toString()));
+                startActivity(intent);
             });
             builder.setNegativeButton("Eliminar", (dialogInterface, j) -> {
                 TextView txtRevistaId = view.findViewById(R.id.txtRevistaId);
@@ -85,7 +89,7 @@ public class RevistaCrudListaActivity extends NewAppCompatActivity {
                             obtenerRevistas();
                         }
                     } catch (Exception e) {
-                        logger.log(Level.WARNING, "Error connecting to Revista service");
+                        LOGGER.log(Level.WARNING, "Error connecting to Revista service");
                         e.printStackTrace();
                     }
                 }
@@ -112,7 +116,7 @@ public class RevistaCrudListaActivity extends NewAppCompatActivity {
                             adapter.notifyDataSetChanged();
                         }
                     } catch (Exception e) {
-                        logger.log(Level.WARNING, "Error connecting to Revista service");
+                        LOGGER.log(Level.WARNING, "Error connecting to Revista service");
                         e.printStackTrace();
                     }
                 }
@@ -139,7 +143,7 @@ public class RevistaCrudListaActivity extends NewAppCompatActivity {
                             adapter.notifyDataSetChanged();
                         }
                     } catch (Exception e) {
-                        logger.log(Level.WARNING, "Error connecting to Revista service");
+                        LOGGER.log(Level.WARNING, "Error connecting to Revista service");
                         e.printStackTrace();
                     }
                 }

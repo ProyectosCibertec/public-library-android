@@ -9,6 +9,7 @@ import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public interface ServiceRevista {
@@ -16,11 +17,17 @@ public interface ServiceRevista {
     @POST("revista")
     Call<Revista> createMagazine(@Body Revista revista);
 
+    @PUT("revista")
+    Call<Revista> updateMagazine(@Body Revista revista);
+
     @GET("revista")
     Call<List<Revista>> getMagazines();
 
     @GET("revista/porNombre/{nombre}")
     Call<List<Revista>> searchMagazines(@Path("nombre") String nombre);
+
+    @GET("revista/{id}")
+    Call<Revista> getMagazineById(@Path("id") int id);
 
     @DELETE("revista/{id}")
     Call<Revista> deleteMagazine(@Path("id") int id);

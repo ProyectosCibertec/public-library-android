@@ -9,7 +9,7 @@
     tools:context=".vista.registra.RevistaRegistraActivity">
 
     <TextView
-        android:id="@+id/idTitlePage"
+        android:id="@+id/txtTitulo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginVertical="10dp"
