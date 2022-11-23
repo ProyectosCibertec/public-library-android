@@ -89,7 +89,7 @@ public class LibroCrudFormularioActivity extends NewAppCompatActivity {
 
             txtTitulo2.setText(obj.getTitulo());
             txtSerie.setText(obj.getSerie());
-            //txtAnio.setText(obj.getAnio());
+            txtAnio.setText(obj.getAnio()+"");
 
         }
 
