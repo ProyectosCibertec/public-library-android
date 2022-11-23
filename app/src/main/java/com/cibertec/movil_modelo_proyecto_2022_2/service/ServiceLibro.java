@@ -8,6 +8,8 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
+import retrofit2.http.Path;
 
 public interface ServiceLibro {
 
@@ -16,4 +18,10 @@ public interface ServiceLibro {
 
     @GET("libro")
     public Call<List<Libro>> listaLibro();
+
+    @GET("libro/porTitulo/{titulo}")
+    public Call<List<Libro>> listaLibroPorTitulo(@Path("titulo")String titulo);
+
+    @PUT("libro")
+    public Call<Libro> actualizaLibro(@Body Libro obj);
 }

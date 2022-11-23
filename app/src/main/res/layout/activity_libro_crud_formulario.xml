@@ -8,6 +8,7 @@
     android:orientation="vertical">
 
     <TextView
+        android:id="@+id/idCrudLibroFrmTitulo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
@@ -15,7 +16,78 @@
         android:text="@string/txt_crud_de_libro"
         android:textAlignment="center"
         android:textSize="18sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+
+        />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Título"/>
+            <EditText
+                android:id="@+id/IdCrudLibroFrmTituloLibro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Año"/>
+            <EditText
+                android:id="@+id/IdCrudLibroFrmLibro_Año"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:maxLength="4"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Serie"/>
+            <EditText
+                android:id="@+id/IdCrudLibroFrmLibro_Serie"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Categoria"/>
+
+            <Spinner
+                android:id="@+id/IdCrudLibroFrmCategoria"
+                android:layout_width="match_parent"
+                android:layout_height="38dp" />
+
+            <Button
+                android:id="@+id/IdCrudLibroFrmbtnRegistrar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="1pt"
+                android:text="@string/registrar" />
+
+            <Button
+                android:id="@+id/IdCrudLibroFrmbtnRegresar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="1pt"
+                android:text="Regresa" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+    </ScrollView>
 
 
 </androidx.appcompat.widget.LinearLayoutCompat>
