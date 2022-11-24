@@ -49,7 +49,7 @@ public class AlumnoRegistraActivity extends NewAppCompatActivity {
 
 
     //Acceso al servicio rest
-     ServicePais rest;
+     ServicePais servicePais;
      ServiceAlumno serviceAlumno;
 
     //ComponenteS
@@ -65,7 +65,7 @@ public class AlumnoRegistraActivity extends NewAppCompatActivity {
 
         //Acceso al servicio rest
         serviceAlumno = ConnectionRest.getConnection().create(ServiceAlumno.class);
-        rest = ConnectionRest.getConnection().create(ServicePais.class);
+        servicePais= ConnectionRest.getConnection().create(ServicePais.class);
         //Para el adaptador
         adaptador = new ArrayAdapter<String>(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, paises);
         spnRegPais = findViewById(R.id.spnRegPais);
@@ -82,6 +82,7 @@ public class AlumnoRegistraActivity extends NewAppCompatActivity {
         txtRegAlumnoFecNac =  findViewById(R.id.txtRegAlumnoFecNac);
         //Boton REGISTRAR
         btnRegistrar = findViewById(R.id.btnRegistrar);
+
         btnRegistrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -181,7 +182,7 @@ public class AlumnoRegistraActivity extends NewAppCompatActivity {
 
 
 public void cargaPaises(){
-    Call<List<Pais>> call = rest.listaTodos();
+    Call<List<Pais>> call = servicePais.listaTodos();
     call.enqueue(new Callback<List<Pais>>() {
         @Override
         public void onResponse(Call<List<Pais>> call, Response<List<Pais>> response) {
@@ -189,7 +190,7 @@ public void cargaPaises(){
                 List<Pais> lstPaises = response.body();
                 for (Pais objPaises:lstPaises){
 
-                  paises.add(objPaises.getIdPais() + ":  " + objPaises.getIso() + "-->  " + objPaises.getNombre());
+                  paises.add(objPaises.getIdPais() + ": " + objPaises.getIso() + "-->  " + objPaises.getNombre());
                   //paises.add(objPaises.getNombre());
                 }
                 adaptador.notifyDataSetChanged();
