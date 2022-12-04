@@ -2,10 +2,12 @@ package com.cibertec.movil_modelo_proyecto_2022_2.vista.registra;
 
 
 import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -27,10 +29,14 @@ import com.cibertec.movil_modelo_proyecto_2022_2.util.ConnectionRest;
 import com.cibertec.movil_modelo_proyecto_2022_2.util.FunctionUtil;
 import com.cibertec.movil_modelo_proyecto_2022_2.util.NewAppCompatActivity;
 import com.cibertec.movil_modelo_proyecto_2022_2.util.ValidacionUtil;
+import com.cibertec.movil_modelo_proyecto_2022_2.vista.crud.AlumnoCrudFormularioActivity;
 
 import java.sql.Connection;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -63,25 +69,47 @@ public class AlumnoRegistraActivity extends NewAppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alumno_registra);
 
-        //Acceso al servicio rest
-        serviceAlumno = ConnectionRest.getConnection().create(ServiceAlumno.class);
-        servicePais= ConnectionRest.getConnection().create(ServicePais.class);
-        //Para el adaptador
-        adaptador = new ArrayAdapter<String>(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, paises);
-        spnRegPais = findViewById(R.id.spnRegPais);
-        spnRegPais.setAdapter(adaptador);
-        //Llena paises en el spiner
-        cargaPaises();
-
-
         txtRegAlumnoNombres = findViewById(R.id.txtRegAlumnoNombres);
         txtRegAlumnoApellidos = findViewById(R.id.txtRegAlumnoApellidos);
         txtRegAlumnoTelefono = findViewById(R.id.txtRegAlumnoTelefono);
         txtRegAlumnoDni = findViewById(R.id.txtRegAlumnoDni);
         txtRegAlumnoCorreo = findViewById(R.id.txtRegAlumnoCorreo);
         txtRegAlumnoFecNac =  findViewById(R.id.txtRegAlumnoFecNac);
+
+
+        //Acceso al servicio rest
+        serviceAlumno = ConnectionRest.getConnection().create(ServiceAlumno.class);
+        servicePais= ConnectionRest.getConnection().create(ServicePais.class);
+
+        //Para el adaptador
+        adaptador = new ArrayAdapter<String>(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, paises);
+        spnRegPais = findViewById(R.id.spnRegPais);
+        spnRegPais.setAdapter(adaptador);
+
+        //Llena paises en el spiner
+        cargaPaises();
+
+        txtRegAlumnoFecNac.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Calendar myCalendar = Calendar.getInstance();
+                new DatePickerDialog
+                        (AlumnoRegistraActivity.this, new DatePickerDialog.OnDateSetListener() {
+                            @Override
+                            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", new Locale("es"));
+                                myCalendar.set(Calendar.YEAR, year);
+                                myCalendar.set(Calendar.MONTH, month);
+                                myCalendar.set(Calendar.DAY_OF_MONTH, day);
+                                txtRegAlumnoFecNac.setText(dateFormat.format(myCalendar.getTime()));
+                            }
+                        }, myCalendar.get(Calendar.YEAR), myCalendar.get(Calendar.MONTH), myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+            }
+        });
+
         //Boton REGISTRAR
         btnRegistrar = findViewById(R.id.btnRegistrar);
+
 
         btnRegistrar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -104,6 +132,7 @@ public class AlumnoRegistraActivity extends NewAppCompatActivity {
                 }else if (!cor.matches(ValidacionUtil.CORREO)){
                     mensajeToast("El correo tener el siguiente formato: abc@abc.abc");
                 }else if (!fec.matches(ValidacionUtil.FECHA)){
+
                     mensajeToast("La fecha debe tener el siguiente formato: año-mes-día");
                 }else{
                    try {
@@ -163,7 +192,11 @@ public class AlumnoRegistraActivity extends NewAppCompatActivity {
                             "\nEstado  >> " + objSalida.getEstado() +
                             "\nPaís >> " + objSalida.getPais()
 
-                );
+
+                )
+                    ;
+                    limpia();
+
 
                     } else{
                         mensajeAlert(response.toString());
@@ -178,7 +211,6 @@ public class AlumnoRegistraActivity extends NewAppCompatActivity {
             }
         });
     }
-
 
 
 public void cargaPaises(){
@@ -205,7 +237,15 @@ public void cargaPaises(){
 
     });
 }
+public void limpia(){
+   txtRegAlumnoNombres.setText("");
+   txtRegAlumnoApellidos.setText("");
+   txtRegAlumnoDni.setText("");
+   txtRegAlumnoCorreo.setText("");
+   txtRegAlumnoTelefono.setText("");
+   txtRegAlumnoFecNac.setText("");
 
+}
 
     public void mensajeToast(String mensaje) {
         Toast toast1 = Toast.makeText(getApplicationContext(), mensaje, Toast.LENGTH_LONG);

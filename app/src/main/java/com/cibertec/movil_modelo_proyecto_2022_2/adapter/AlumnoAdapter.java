@@ -76,7 +76,7 @@ public class AlumnoAdapter extends ArrayAdapter<Alumno>  {
                         ruta = "https://i.postimg.cc/R0YjFM1V/Screenshot-7.jpg";
                     }else if(objAlumno.getIdAlumno() == 132){
                         ruta = "https://i.postimg.cc/sXZbGtKP/Screenshot-8.jpg";
-                    }else if(objAlumno.getIdAlumno() == 127){
+                    }else if(objAlumno.getIdAlumno() == 215){
                     ruta = "https://i.postimg.cc/Bb9kTMwr/Screenshot-9.jpg";
                     } else {
                         ruta = "https://i.postimg.cc/B63YdPxv/no-disponible.png";

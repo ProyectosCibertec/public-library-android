@@ -47,6 +47,8 @@ public class AlumnoCrudAdapter extends ArrayAdapter<Alumno> {
         TextView txtApellidos = row.findViewById(R.id.idCrudAlumnoItemApellido);
         txtApellidos.setText(objAlumno.getApellidos());
 
+
+
         if (position % 2 == 0) {
             txtID.setBackgroundColor(Color.rgb(245, 245, 220));
             txtApellidos.setBackgroundColor(Color.rgb(204, 255, 204));

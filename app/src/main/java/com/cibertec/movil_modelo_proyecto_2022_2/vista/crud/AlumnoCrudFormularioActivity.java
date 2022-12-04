@@ -1,6 +1,8 @@
 package com.cibertec.movil_modelo_proyecto_2022_2.vista.crud;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -12,7 +14,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.cibertec.movil_modelo_proyecto_2022_2.R;
-import com.cibertec.movil_modelo_proyecto_2022_2.adapter.AlumnoAdapter;
+import com.cibertec.movil_modelo_proyecto_2022_2.adapter.AlumnoCrudAdapter;
 import com.cibertec.movil_modelo_proyecto_2022_2.entity.Alumno;
 import com.cibertec.movil_modelo_proyecto_2022_2.entity.Pais;
 import com.cibertec.movil_modelo_proyecto_2022_2.service.ServiceAlumno;
@@ -99,14 +101,19 @@ public class AlumnoCrudFormularioActivity extends NewAppCompatActivity {
         btnEnviar = findViewById(R.id.idCrudAlumnoFrmBtnRegistrar);
         btnRegresar = findViewById(R.id.idCrudAlumnoFrmBtnRegresar);
 
+
         Bundle extras = getIntent().getExtras();
         String tipo = extras.getString("var_tipo");
         if (tipo.equals("REGISTRAR")) {
             txtTitulo.setText("Mantenimiento Alumno - REGISTRAR");
             btnEnviar.setText("REGISTRAR");
+
+
         } else if (tipo.equals("ACTUALIZAR")) {
             txtTitulo.setText("Mantenimiento Alumno - ACTUALIZAR");
             btnEnviar.setText("ACTUALIZAR");
+
+
 
             Alumno obj = (Alumno) extras.get("var_item");
             txtAlumnoNombres.setText(obj.getNombres());
@@ -124,6 +131,15 @@ public class AlumnoCrudFormularioActivity extends NewAppCompatActivity {
                 Intent intent = new Intent(AlumnoCrudFormularioActivity.this, AlumnoCrudListaActivity.class);
                 startActivity(intent);
             }
+
+        });
+        btnRegresar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(AlumnoCrudFormularioActivity.this, AlumnoCrudListaActivity.class);
+                startActivity(intent);
+            }
+
         });
 
 
@@ -172,11 +188,13 @@ public class AlumnoCrudFormularioActivity extends NewAppCompatActivity {
                         String tipo = extras.getString("var_tipo");
                         if (tipo.equals("REGISTRAR")) {
                             registra(alumno);
+                            limpia();
 
                         } else if (tipo.equals("ACTUALIZAR")) {
                             Alumno obj = (Alumno) extras.get("var_item");
                             alumno.setIdAlumno(obj.getIdAlumno());
                             actualiza(alumno);
+
 
                         }
 
@@ -188,9 +206,27 @@ public class AlumnoCrudFormularioActivity extends NewAppCompatActivity {
             }
         });
 
+
+
     }
 
 
+    public void msgact(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(AlumnoCrudFormularioActivity.this);
+        builder.setMessage("¿Desea actulizar este registro?")
+                .setPositiveButton( "SI", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                    }
+
+                })
+                .setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+                }).show();
+    }
     public void cargaPaises() {
         Call<List<Pais>> call = servicePais.listaTodos();
         call.enqueue(new Callback<List<Pais>>() {
@@ -311,6 +347,14 @@ public class AlumnoCrudFormularioActivity extends NewAppCompatActivity {
             }
         });
     }
+    public void limpia(){
+        txtAlumnoNombres.setText("");
+        txtAlumnoApellidos.setText("");
+        txtAlumnoDni.setText("");
+        txtAlumnoCorreo.setText("");
+        txtAlumnoTelefono.setText("");
+        txtAlumnoFecNac.setText("");
 
+    }
 
 }
