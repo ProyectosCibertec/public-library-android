@@ -42,7 +42,7 @@
         android:layout_height="wrap_content"
         android:text="@string/registrar" />
 
-    <ListView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/lstCrudMantenimientoRevista"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

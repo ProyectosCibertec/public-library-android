@@ -5,6 +5,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.cibertec.movil_modelo_proyecto_2022_2.R;
 import com.cibertec.movil_modelo_proyecto_2022_2.adapter.RevistaAdapter;
 import com.cibertec.movil_modelo_proyecto_2022_2.entity.Revista;
@@ -20,7 +23,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class RevistaConsultaActivity extends NewAppCompatActivity {
-    ListView lstViewRevistas;
+    RecyclerView rclrViewRevistas;
     List<Revista> revistaList = new ArrayList<>();
     RevistaAdapter revistaAdapter;
 
@@ -32,9 +35,11 @@ public class RevistaConsultaActivity extends NewAppCompatActivity {
 
         setContentView(R.layout.activity_revista_consulta);
 
-        lstViewRevistas = findViewById(R.id.lstViewRevistas);
-        revistaAdapter = new RevistaAdapter(this, R.layout.activity_revista_consulta_item, revistaList);
-        lstViewRevistas.setAdapter(revistaAdapter);
+        rclrViewRevistas = (RecyclerView) findViewById(R.id.lstViewRevistas);
+        revistaAdapter = new RevistaAdapter(revistaList);
+        rclrViewRevistas.setAdapter(revistaAdapter);
+        rclrViewRevistas.setLayoutManager(new LinearLayoutManager(this));
+        rclrViewRevistas.scrollToPosition(0);
 
         serviceRevista = ConnectionRest.getConnection().create(ServiceRevista.class);
     }

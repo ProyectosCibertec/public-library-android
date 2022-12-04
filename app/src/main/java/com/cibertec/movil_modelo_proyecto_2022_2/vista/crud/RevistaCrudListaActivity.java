@@ -4,10 +4,15 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.cibertec.movil_modelo_proyecto_2022_2.R;
 import com.cibertec.movil_modelo_proyecto_2022_2.adapter.RevistaAdapter;
@@ -30,7 +35,7 @@ import retrofit2.Response;
 public class RevistaCrudListaActivity extends NewAppCompatActivity {
 
     private static Logger LOGGER = Logger.getLogger(RevistaCrudListaActivity.class.getName());
-    ListView lstCrudMantenimientoRevista;
+    RecyclerView lstCrudMantenimientoRevista;
     List<Revista> revistaList = new ArrayList<>();
     RevistaAdapter adapter;
 
@@ -53,53 +58,11 @@ public class RevistaCrudListaActivity extends NewAppCompatActivity {
         });
         // Listar revistas
         lstCrudMantenimientoRevista = findViewById(R.id.lstCrudMantenimientoRevista);
-        adapter = new RevistaAdapter(this, R.layout.activity_revista_consulta_item, revistaList);
+        adapter = new RevistaAdapter(revistaList);
         lstCrudMantenimientoRevista.setAdapter(adapter);
+        lstCrudMantenimientoRevista.setLayoutManager(new LinearLayoutManager(this));
+        lstCrudMantenimientoRevista.scrollToPosition(0);
         obtenerRevistas();
-        // Actualizar/Eliminar revistas
-        lstCrudMantenimientoRevista.setOnItemClickListener((adapterView, view, i, l) -> {
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setTitle("¿Qué desea hacer?");
-            builder.setPositiveButton("Actualizar", (dialogInterface, j) -> {
-                Intent intent = new Intent(this, RevistaRegistraActivity.class);
-                TextView txtRevistaId = view.findViewById(R.id.txtRevistaId);
-                intent.putExtra("ES_REGISTRO", false);
-                intent.putExtra("ID_REVISTA", Integer.parseInt(txtRevistaId.getText().toString()));
-                startActivity(intent);
-            });
-            builder.setNegativeButton("Eliminar", (dialogInterface, j) -> {
-                TextView txtRevistaId = view.findViewById(R.id.txtRevistaId);
-                int id = Integer.parseInt(txtRevistaId.getText().toString());
-                eliminarRevista(id);
-            });
-            AlertDialog dialog = builder.create();
-            dialog.show();
-        });
-    }
-
-    private void eliminarRevista(int id) {
-        ServiceRevista service = ConnectionRest.getConnection().create(ServiceRevista.class);
-        Call<Revista> call = service.deleteMagazine(id);
-        call.enqueue(new Callback<Revista>() {
-            @Override
-            public void onResponse(Call<Revista> call, Response<Revista> response) {
-                if (response.isSuccessful()) {
-                    try {
-                        if (response.body() != null) {
-                            obtenerRevistas();
-                        }
-                    } catch (Exception e) {
-                        LOGGER.log(Level.WARNING, "Error connecting to Revista service");
-                        e.printStackTrace();
-                    }
-                }
-            }
-
-            @Override
-            public void onFailure(Call<Revista> call, Throwable t) {
-
-            }
-        });
     }
 
     private void buscarRevistas(String nombreRevista) {

@@ -1,6 +1,8 @@
 package com.cibertec.movil_modelo_proyecto_2022_2.adapter;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
@@ -12,40 +14,40 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.cibertec.movil_modelo_proyecto_2022_2.R;
 import com.cibertec.movil_modelo_proyecto_2022_2.entity.Revista;
+import com.cibertec.movil_modelo_proyecto_2022_2.vista.crud.RevistaCrudEliminaActivity;
+import com.cibertec.movil_modelo_proyecto_2022_2.vista.registra.RevistaRegistraActivity;
 
 import java.io.BufferedInputStream;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.List;
 
-public class RevistaAdapter extends ArrayAdapter<Revista>  {
-
-    private final Context context;
+public class RevistaAdapter extends RecyclerView.Adapter<RevistaAdapter.ViewHolder> {
     private final List<Revista> lista;
 
-    public RevistaAdapter(@NonNull Context context, int resource, @NonNull List<Revista> lista) {
-        super(context, resource, lista);
-        this.context = context;
+    public RevistaAdapter(@NonNull List<Revista> lista) {
         this.lista = lista;
     }
 
     @NonNull
     @Override
-    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        LayoutInflater inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View row = inflater.inflate(R.layout.activity_revista_consulta_item, parent, false);
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View v = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.activity_revista_consulta_item, parent, false);
 
+        return new ViewHolder(v);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Revista obj = lista.get(position);
 
-        TextView txtID = row.findViewById(R.id.txtRevistaId);
-        txtID.setText(String.valueOf(obj.getIdRevista()));
-
-        TextView  txtRazSoc = row.findViewById(R.id.txtRevistaNombre);
-        txtRazSoc.setText(String.valueOf(obj.getNombre()));
-
+        holder.getTxtRevistaId().setText(String.valueOf(obj.getIdRevista()));
+        holder.getTxtRevistaNombre().setText(obj.getNombre());
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -61,14 +63,63 @@ public class RevistaAdapter extends ArrayAdapter<Revista>  {
                     URL rutaImagen  = new URL(ruta);
                     InputStream is = new BufferedInputStream(rutaImagen.openStream());
                     Bitmap b = BitmapFactory.decodeStream(is);
-                    ImageView vista = row.findViewById(R.id.idRevistaItemImagen);
+                    ImageView vista = holder.getIdRevistaItemImagen();
                     vista.setImageBitmap(b);
-                }catch (Exception e){
+                } catch (Exception e){
                     e.printStackTrace();
                 }
             }
         }).start();
+    }
 
-        return row;
+    @Override
+    public int getItemCount() {
+        return lista.size();
+    }
+
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+        private final TextView txtRevistaId;
+        private final TextView txtRevistaNombre;
+        private final ImageView idRevistaItemImagen;
+
+        public ViewHolder(View v) {
+            super(v);
+
+            v.setOnClickListener(view -> {
+                AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+                builder.setTitle("¿Qué desea hacer?");
+                builder.setPositiveButton("Actualizar", (dialogInterface, j) -> {
+                    Intent intent = new Intent(view.getContext(), RevistaRegistraActivity.class);
+                    TextView txtRevistaId = view.findViewById(R.id.txtRevistaId);
+                    intent.putExtra("ES_REGISTRO", false);
+                    intent.putExtra("ID_REVISTA", Integer.parseInt(txtRevistaId.getText().toString()));
+                    view.getContext().startActivity(intent);
+                });
+                builder.setNegativeButton("Eliminar", (dialogInterface, j) -> {
+                    Intent intent = new Intent(view.getContext(), RevistaCrudEliminaActivity.class);
+                    TextView txtRevistaId = view.findViewById(R.id.txtRevistaId);
+                    intent.putExtra("ID_REVISTA", Integer.parseInt(txtRevistaId.getText().toString()));
+                    view.getContext().startActivity(intent);
+                });
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            });
+
+            txtRevistaId = (TextView) v.findViewById(R.id.txtRevistaId);
+            txtRevistaNombre = (TextView) v.findViewById(R.id.txtRevistaNombre);
+            idRevistaItemImagen = (ImageView) v.findViewById(R.id.idRevistaItemImagen);
+        }
+
+        public TextView getTxtRevistaId() {
+            return txtRevistaId;
+        }
+
+        public TextView getTxtRevistaNombre() {
+            return txtRevistaNombre;
+        }
+
+        public ImageView getIdRevistaItemImagen() {
+            return idRevistaItemImagen;
+        }
     }
 }

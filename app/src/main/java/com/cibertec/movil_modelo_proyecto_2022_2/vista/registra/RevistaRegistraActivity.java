@@ -62,7 +62,7 @@ public class RevistaRegistraActivity extends NewAppCompatActivity {
         esRegistro = getIntent().getBooleanExtra("ES_REGISTRO", true);
         idRevista = getIntent().getIntExtra("ID_REVISTA", 0);
         txtTitulo = findViewById(R.id.txtTitulo);
-        btnRegistrar = findViewById(R.id.btnRegistrar);
+        btnRegistrar = findViewById(R.id.btnEliminar);
         if (!esRegistro) {
             txtTitulo.setText("Actualización de Revista");
             btnRegistrar.setText("ACTUALIZAR");
@@ -157,6 +157,7 @@ public class RevistaRegistraActivity extends NewAppCompatActivity {
             Modalidad objModalidad = new Modalidad();
             objModalidad.setIdModalidad(Integer.parseInt(idModalidad));
             Revista revista = new Revista();
+            revista.setIdRevista(idRevista);
             revista.setNombre(nombre);
             revista.setFrecuencia(frecuencia);
             revista.setFechaCreacion(fechaCreacion);
