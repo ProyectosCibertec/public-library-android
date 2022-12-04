@@ -194,6 +194,9 @@ public class AlumnoCrudFormularioActivity extends NewAppCompatActivity {
                             Alumno obj = (Alumno) extras.get("var_item");
                             alumno.setIdAlumno(obj.getIdAlumno());
                             actualiza(alumno);
+                            msgact();
+
+
 
 
                         }
@@ -213,10 +216,11 @@ public class AlumnoCrudFormularioActivity extends NewAppCompatActivity {
 
     public void msgact(){
         AlertDialog.Builder builder = new AlertDialog.Builder(AlumnoCrudFormularioActivity.this);
-        builder.setMessage("¿Desea actulizar este registro?")
+        builder.setMessage("¿Desea actualizar este registro?")
                 .setPositiveButton( "SI", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
+
                     }
 
                 })
@@ -320,7 +324,7 @@ public class AlumnoCrudFormularioActivity extends NewAppCompatActivity {
                 if (response.isSuccessful()) {
                     Alumno objSalida = response.body();
                     if (objSalida != null) {
-                        mensajeAlert("Se actualizó datos del Alumno" +
+                        mensajeAlert("Se actualizaran los datos del Alumno" +
                                 "\nId >> " + objSalida.getIdAlumno() +
                                 "\nNombres >> " + objSalida.getNombres() +
                                 "\nApellidos >> " + objSalida.getApellidos() +
