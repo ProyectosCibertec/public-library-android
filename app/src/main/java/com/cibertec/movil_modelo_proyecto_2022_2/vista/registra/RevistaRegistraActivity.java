@@ -62,15 +62,15 @@ public class RevistaRegistraActivity extends NewAppCompatActivity {
         esRegistro = getIntent().getBooleanExtra("ES_REGISTRO", true);
         idRevista = getIntent().getIntExtra("ID_REVISTA", 0);
         txtTitulo = findViewById(R.id.txtTitulo);
-        btnRegistrar = findViewById(R.id.btnEliminar);
+        btnRegistrar = findViewById(R.id.btnIngresar);
         if (!esRegistro) {
             txtTitulo.setText("Actualización de Revista");
             btnRegistrar.setText("ACTUALIZAR");
         }
         serviceModalidad = ConnectionRest.getConnection().create(ServiceModalidad.class);
         serviceRevista = ConnectionRest.getConnection().create(ServiceRevista.class);
-        editNombre = findViewById(R.id.editNombre);
-        editFrecuencia = findViewById(R.id.editFrecuencia);
+        editNombre = findViewById(R.id.editEmail);
+        editFrecuencia = findViewById(R.id.editClave);
         editFechaCreacion = findViewById(R.id.editFechaCreacion);
         spnModalidad = findViewById(R.id.spnModalidad);
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, modalidadList);

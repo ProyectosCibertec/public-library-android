@@ -36,11 +36,11 @@ public class RevistaCrudEliminaActivity extends NewAppCompatActivity {
         setContentView(R.layout.activity_revista_crud_elimina);
 
         idRevista = getIntent().getIntExtra("ID_REVISTA", 0);
-        editNombre = findViewById(R.id.txtNombre);
-        editFrecuencia = findViewById(R.id.txtFrecuencia);
+        editNombre = findViewById(R.id.txtEmail);
+        editFrecuencia = findViewById(R.id.txtClave);
         editFechaCreacion = findViewById(R.id.txtFechaCreacion);
         editModalidad = findViewById(R.id.txtModalidad);
-        btnEliminar = findViewById(R.id.btnEliminar);
+        btnEliminar = findViewById(R.id.btnIngresar);
 
         btnEliminar.setOnClickListener(view -> {
             deleteMagazine();

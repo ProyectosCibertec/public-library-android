@@ -28,27 +28,27 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/txtNombre"
+                android:id="@+id/txtEmail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="1pt"
                 android:text="@string/nombre" />
 
             <EditText
-                android:id="@+id/editNombre"
+                android:id="@+id/editEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="1pt" />
 
             <TextView
-                android:id="@+id/txtFrecuencia"
+                android:id="@+id/txtClave"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="1pt"
                 android:text="@string/frecuencia" />
 
             <EditText
-                android:id="@+id/editFrecuencia"
+                android:id="@+id/editClave"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="1pt" />
@@ -79,7 +79,7 @@
                 android:layout_height="38dp" />
 
             <Button
-                android:id="@+id/btnEliminar"
+                android:id="@+id/btnIngresar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="1pt"
