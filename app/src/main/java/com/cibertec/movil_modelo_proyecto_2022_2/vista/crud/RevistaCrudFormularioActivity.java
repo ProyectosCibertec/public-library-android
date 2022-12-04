@@ -13,6 +13,4 @@ public class RevistaCrudFormularioActivity extends NewAppCompatActivity {
         setContentView(R.layout.activity_revista_crud_formulario);
     }
 
-
-
 }
